@@ -6,20 +6,29 @@ public class BitmapLevelBuilder : MonoBehaviour
     [Header("Level Configuration")]
     public string imageName = "Levels/maze1";
     
-    [Header("Prefab References")]
-    public GameObject wallPrefab;
+    [Header("Tile Prefab References")]
     public GameObject floorPrefab;
     public GameObject holePrefab;
     public GameObject startPrefab;
     public GameObject endPrefab;
     public GameObject marblePrefab;
     
+    [Header("Wall Prefab References")]
+    public GameObject wallSoloPrefab;      // Isolated wall piece
+    public GameObject wallEndPrefab;       // Dead end wall
+    public GameObject wallStraightPrefab;  // Straight wall segment
+    public GameObject wallCornerPrefab;    // L-shaped corner
+    public GameObject wallTJunctionPrefab; // T-shaped junction
+    public GameObject wallCrossPrefab;     // Cross intersection
+    
     [Header("Debug Options")]
     public bool enableDebugLogs = true;
     public bool showColorDetection = false;
+    public bool showWallBitmasks = false;
     
     private GameObject marbleInstance;
     private HashSet<Color32> seenColors = new HashSet<Color32>();
+    private Texture2D levelImage;
     
     // Color mappings based on debugged values
     private readonly Color32 BLACK_WALL = new Color32(0, 0, 0, 255);
@@ -41,14 +50,16 @@ public class BitmapLevelBuilder : MonoBehaviour
     
     private bool ValidatePrefabs()
     {
-        return wallPrefab != null && floorPrefab != null && holePrefab != null && 
-               startPrefab != null && endPrefab != null && marblePrefab != null;
+        return floorPrefab != null && holePrefab != null && startPrefab != null && 
+               endPrefab != null && marblePrefab != null &&
+               wallSoloPrefab != null && wallEndPrefab != null && wallStraightPrefab != null &&
+               wallCornerPrefab != null && wallTJunctionPrefab != null && wallCrossPrefab != null;
     }
     
     private void BuildLevelFromBitmap()
     {
-        Texture2D image = Resources.Load<Texture2D>(imageName);
-        if (image == null)
+        levelImage = Resources.Load<Texture2D>(imageName);
+        if (levelImage == null)
         {
             Debug.LogError($"❌ Maze image not found at Resources/{imageName}.png");
             return;
@@ -56,19 +67,19 @@ public class BitmapLevelBuilder : MonoBehaviour
         
         if (enableDebugLogs)
         {
-            Debug.Log($"🗺️ Building level from {imageName} ({image.width}x{image.height})");
+            Debug.Log($"🗺️ Building level from {imageName} ({levelImage.width}x{levelImage.height})");
         }
         
         // Calculate offset to center the maze
-        float xOffset = -(image.width - 1) / 2f;
-        float zOffset = (image.height - 1) / 2f;
+        float xOffset = -(levelImage.width - 1) / 2f;
+        float zOffset = (levelImage.height - 1) / 2f;
         
-        // Process each pixel
-        for (int y = 0; y < image.height; y++)
+        // First pass: Process non-wall tiles
+        for (int y = 0; y < levelImage.height; y++)
         {
-            for (int x = 0; x < image.width; x++)
+            for (int x = 0; x < levelImage.width; x++)
             {
-                Color32 pixel = (Color32)image.GetPixel(x, y);
+                Color32 pixel = (Color32)levelImage.GetPixel(x, y);
                 Vector3 position = new Vector3(x + xOffset, 0, -y + zOffset);
                 
                 // Track unique colors for debugging
@@ -78,8 +89,8 @@ public class BitmapLevelBuilder : MonoBehaviour
                     Debug.Log($"🎨 New color at ({x},{y}): R={pixel.r}, G={pixel.g}, B={pixel.b}, A={pixel.a}");
                 }
                 
-                // Get and instantiate the appropriate prefab
-                GameObject prefabToSpawn = GetPrefabForColor(pixel);
+                // Get and instantiate the appropriate prefab (except walls)
+                GameObject prefabToSpawn = GetNonWallPrefabForColor(pixel);
                 if (prefabToSpawn != null)
                 {
                     Instantiate(prefabToSpawn, position, Quaternion.identity, transform);
@@ -88,8 +99,6 @@ public class BitmapLevelBuilder : MonoBehaviour
                 // Special handling for marble placement on start position
                 if (IsColorMatch(pixel, GREEN_START) && marblePrefab != null)
                 {
-                    // Floor tiles are 0.2 units thick (Y scale), so top is at Y: 0.1
-                    // Marble radius is 0.25, so place at Y: 0.35 (0.1 + 0.25) to rest on floor
                     Vector3 marblePosition = position + Vector3.up * 0.35f;
                     marbleInstance = Instantiate(marblePrefab, marblePosition, Quaternion.identity);
                     
@@ -101,21 +110,153 @@ public class BitmapLevelBuilder : MonoBehaviour
             }
         }
         
+        // Second pass: Process walls with intelligent placement
+        for (int y = 0; y < levelImage.height; y++)
+        {
+            for (int x = 0; x < levelImage.width; x++)
+            {
+                Color32 pixel = (Color32)levelImage.GetPixel(x, y);
+                
+                if (IsColorMatch(pixel, BLACK_WALL))
+                {
+                    Vector3 position = new Vector3(x + xOffset, 0, -y + zOffset);
+                    PlaceIntelligentWall(x, y, position);
+                }
+            }
+        }
+        
         if (enableDebugLogs)
         {
             Debug.Log($"✅ Level built successfully! Total unique colors found: {seenColors.Count}");
         }
     }
     
-    private GameObject GetPrefabForColor(Color32 color)
+    private void PlaceIntelligentWall(int x, int y, Vector3 position)
     {
-        // Exact color matching based on debugged values
-        if (IsColorMatch(color, BLACK_WALL))
+        // First, place a floor tile underneath the wall
+        if (floorPrefab != null)
         {
-            LogColorDetection(color, "Wall (Black)");
-            return wallPrefab;
+            Instantiate(floorPrefab, position, Quaternion.identity, transform);
         }
         
+        int bitmask = GetWallBitmask(x, y);
+        
+        if (showWallBitmasks)
+        {
+            Debug.Log($"🧱 Wall at ({x},{y}) - Bitmask: {bitmask}");
+        }
+        
+        GameObject wallPrefab = GetWallPrefabForBitmask(bitmask);
+        float rotationY = GetWallRotationForBitmask(bitmask);
+        
+        if (wallPrefab != null)
+        {
+            Quaternion rotation = Quaternion.Euler(0, rotationY, 0);
+            Instantiate(wallPrefab, position, rotation, transform);
+            
+            if (showWallBitmasks)
+            {
+                Debug.Log($"🔧 Placed {wallPrefab.name} at ({x},{y}) with rotation {rotationY}° (with floor underneath)");
+            }
+        }
+    }
+    
+    private int GetWallBitmask(int x, int y)
+    {
+        int bitmask = 0;
+        
+        // Check cardinal directions: N=1, E=2, S=4, W=8
+        if (IsWall(x, y - 1)) bitmask += 1; // North
+        if (IsWall(x + 1, y)) bitmask += 2; // East
+        if (IsWall(x, y + 1)) bitmask += 4; // South
+        if (IsWall(x - 1, y)) bitmask += 8; // West
+        
+        return bitmask;
+    }
+    
+    private bool IsWall(int x, int y)
+    {
+        // Check bounds
+        if (x < 0 || y < 0 || x >= levelImage.width || y >= levelImage.height) 
+            return false;
+        
+        Color32 pixel = (Color32)levelImage.GetPixel(x, y);
+        return IsColorMatch(pixel, BLACK_WALL);
+    }
+    
+    private GameObject GetWallPrefabForBitmask(int bitmask)
+    {
+        switch (bitmask)
+        {
+            case 0:  return wallSoloPrefab;      // Isolated
+            
+            case 1:  return wallEndPrefab;       // End North
+            case 2:  return wallEndPrefab;       // End East
+            case 4:  return wallEndPrefab;       // End South
+            case 8:  return wallEndPrefab;       // End West
+            
+            case 5:  return wallStraightPrefab;  // Straight N+S
+            case 10: return wallStraightPrefab;  // Straight E+W
+            
+            case 3:  return wallCornerPrefab;    // Corner NE
+            case 6:  return wallCornerPrefab;    // Corner SE
+            case 12: return wallCornerPrefab;    // Corner SW
+            case 9:  return wallCornerPrefab;    // Corner NW
+            
+            case 14: return wallTJunctionPrefab; // T-junction (open North)
+            case 7:  return wallTJunctionPrefab; // T-junction (open West)
+            case 11: return wallTJunctionPrefab; // T-junction (open South)
+            case 13: return wallTJunctionPrefab; // T-junction (open East)
+            
+            case 15: return wallCrossPrefab;     // Cross (all directions)
+            
+            default:
+                if (enableDebugLogs)
+                {
+                    Debug.LogWarning($"⚠️ Unknown wall bitmask: {bitmask}");
+                }
+                return wallSoloPrefab; // Fallback to solo wall
+        }
+    }
+    
+    private float GetWallRotationForBitmask(int bitmask)
+    {
+        switch (bitmask)
+        {
+            // Solo wall - no rotation needed
+            case 0:  return 0f;
+            
+            // End walls
+            case 1:  return 0f;    // North
+            case 2:  return 90f;   // East
+            case 4:  return 180f;  // South
+            case 8:  return 270f;  // West
+            
+            // Straight walls
+            case 5:  return 0f;    // Vertical (N+S)
+            case 10: return 90f;   // Horizontal (E+W)
+            
+            // Corner walls
+            case 3:  return 270f;  // NE
+            case 6:  return 0f;    // SE
+            case 12: return 90f;   // SW
+            case 9:  return 180f;  // NW
+            
+            // T-junction walls (opening direction)
+            case 14: return 180f;  // Open North
+            case 7:  return 90f;   // Open West
+            case 11: return 0f;    // Open South
+            case 13: return 270f;  // Open East
+            
+            // Cross - no rotation needed
+            case 15: return 0f;
+            
+            default: return 0f;
+        }
+    }
+    
+    private GameObject GetNonWallPrefabForColor(Color32 color)
+    {
         if (IsColorMatch(color, WHITE_FLOOR))
         {
             LogColorDetection(color, "Floor (White)");
@@ -140,6 +281,12 @@ public class BitmapLevelBuilder : MonoBehaviour
             return startPrefab;
         }
         
+        // Don't process walls here - they're handled in the second pass
+        if (IsColorMatch(color, BLACK_WALL))
+        {
+            return null;
+        }
+        
         // Unknown color
         if (enableDebugLogs)
         {
@@ -151,7 +298,6 @@ public class BitmapLevelBuilder : MonoBehaviour
     
     private bool IsColorMatch(Color32 a, Color32 b, int tolerance = 0)
     {
-        // Exact match by default, but tolerance can be added if needed
         return Mathf.Abs(a.r - b.r) <= tolerance &&
                Mathf.Abs(a.g - b.g) <= tolerance &&
                Mathf.Abs(a.b - b.b) <= tolerance &&
