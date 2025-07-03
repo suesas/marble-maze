@@ -101,6 +101,10 @@ public class BitmapLevelBuilder : MonoBehaviour
                 {
                     Vector3 marblePosition = position + Vector3.up * 0.35f;
                     marbleInstance = Instantiate(marblePrefab, marblePosition, Quaternion.identity);
+                    Rigidbody marbleRigidbody = marbleInstance.GetComponent<Rigidbody>();
+                    marbleRigidbody.WakeUp();
+                    marbleRigidbody.sleepThreshold = 0.0f;
+
                     
                     if (enableDebugLogs)
                     {
