@@ -56,6 +56,9 @@ public class LevelBuilder : MonoBehaviour
 
                 if (symbol == 'S' && marble != null)
                     marbleInstance = Instantiate(marble, pos + Vector3.up * 0.5f, Quaternion.identity);
+                    Rigidbody rb = marbleInstance.GetComponent<Rigidbody>();
+                    rb.WakeUp();
+                    rb.sleepThreshold = 0f; 
             }
         }
     }
