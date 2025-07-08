@@ -8,6 +8,7 @@ public class BitmapLevelBuilder : MonoBehaviour
     
     [Header("Tile Prefab References")]
     public GameObject floorPrefab;
+    public GameObject holeTriggerPrefab;
     public GameObject holePrefab;
     public GameObject startPrefab;
     public GameObject endPrefab;
@@ -91,9 +92,14 @@ public class BitmapLevelBuilder : MonoBehaviour
                 
                 // Get and instantiate the appropriate prefab (except walls)
                 GameObject prefabToSpawn = GetNonWallPrefabForColor(pixel);
-                if (prefabToSpawn != null)
+                if (prefabToSpawn != null && prefabToSpawn != holePrefab)
                 {
                     Instantiate(prefabToSpawn, position, Quaternion.identity, transform);
+                }
+                else if (prefabToSpawn == holePrefab)
+                {
+                    Instantiate(holePrefab, position, Quaternion.identity, transform);
+                    Instantiate(holeTriggerPrefab, position + Vector3.up * -0.3f, Quaternion.identity, transform);
                 }
                 
                 // Special handling for marble placement on start position
@@ -102,10 +108,12 @@ public class BitmapLevelBuilder : MonoBehaviour
                     Vector3 marblePosition = position + Vector3.up * 0.35f;
                     marbleInstance = Instantiate(marblePrefab, marblePosition, Quaternion.identity);
                     Rigidbody marbleRigidbody = marbleInstance.GetComponent<Rigidbody>();
+
+
                     marbleRigidbody.WakeUp();
                     marbleRigidbody.sleepThreshold = 0.0f;
 
-                    
+
                     if (enableDebugLogs)
                     {
                         Debug.Log($"🔵 Marble placed at start position: {marblePosition}");

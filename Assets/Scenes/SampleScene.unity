@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641263, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -319,8 +319,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1398171518}
   - component: {fileID: 1398171519}
-  - component: {fileID: 1398171520}
   - component: {fileID: 1398171521}
+  - component: {fileID: 1398171524}
+  - component: {fileID: 1398171523}
+  - component: {fileID: 1398171522}
   m_Layer: 0
   m_Name: LevelContainer
   m_TagString: Untagged
@@ -357,25 +359,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 6637485341310317442, guid: 43557d42549db4a12b946f123d773b0c, type: 3}
   floorPrefab: {fileID: 4825212717043709830, guid: 84a3df9e8bbb543ffab9238bd53dd86c, type: 3}
-  holePrefab: {fileID: 3956408232085236974, guid: a37bccd8d2c8044218e6fab2ca737f0e, type: 3}
+  holePrefab: {fileID: 7713280918738316896, guid: b278dfce102494f18b89c57fcbb53cce, type: 3}
   startPrefab: {fileID: 8803112679046646688, guid: 04099f80b258c4b1f9fbb2d12e707294, type: 3}
   endPrefab: {fileID: 2613179968774402933, guid: afe7fff0b5f2a40378783e5aa1b6eb64, type: 3}
   marble: {fileID: 4413669893201363092, guid: 90cf6fe03e327498984ed524dd2efbcd, type: 3}
   levelName: Levels/level1
---- !u!114 &1398171520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398171517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecfe29e3fbcc4779a435507951916aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltSpeed: 20
-  maxTilt: 20
 --- !u!114 &1398171521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageName: Levels/maze8
   floorPrefab: {fileID: 4825212717043709830, guid: 84a3df9e8bbb543ffab9238bd53dd86c, type: 3}
-  holePrefab: {fileID: 6042493900621652648, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
+  holeTriggerPrefab: {fileID: 4825212717043709830, guid: 0bf71888d7b704392a46e9746946c8f9, type: 3}
+  holePrefab: {fileID: 7713280918738316896, guid: b278dfce102494f18b89c57fcbb53cce, type: 3}
   startPrefab: {fileID: 8803112679046646688, guid: 04099f80b258c4b1f9fbb2d12e707294, type: 3}
   endPrefab: {fileID: 2613179968774402933, guid: afe7fff0b5f2a40378783e5aa1b6eb64, type: 3}
   marblePrefab: {fileID: 4413669893201363092, guid: 90cf6fe03e327498984ed524dd2efbcd, type: 3}
@@ -403,63 +392,71 @@ MonoBehaviour:
   enableDebugLogs: 1
   showColorDetection: 0
   showWallBitmasks: 0
---- !u!1001 &1676281877
-PrefabInstance:
+--- !u!114 &1398171522
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6042493900621652648, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_Name
-      value: HoleTile
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381759674671495186, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 96d416873c96b4696ae986f5575cb088, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398171517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
+--- !u!114 &1398171523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398171517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7dc31df0a9e42209f316470f1d670b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 1000
+  ballRb: {fileID: 832326566666416298, guid: 90cf6fe03e327498984ed524dd2efbcd, type: 3}
+  ball: {fileID: 6038547436036952353, guid: 90cf6fe03e327498984ed524dd2efbcd, type: 3}
+  goal: {fileID: 3267378684094596952, guid: afe7fff0b5f2a40378783e5aa1b6eb64, type: 3}
+  tiltSpeed: 30
+  maxTilt: 30
+--- !u!114 &1398171524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398171517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 9
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 2
+      BranchSizes: 
+    VectorActionSize: 02000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: TiltBoard
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -467,4 +464,3 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1398171518}
-  - {fileID: 1676281877}
