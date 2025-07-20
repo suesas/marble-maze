@@ -2,31 +2,31 @@
     "StaticLevelAgent": {
         "checkpoints": [
             {
-                "steps": 499999,
-                "file_path": "results/ppo/StaticLevelAgent/StaticLevelAgent-499999.onnx",
-                "reward": -29.062468351097777,
-                "creation_time": 1752883097.305032,
+                "steps": 499984,
+                "file_path": "results/ppo/StaticLevelAgent/StaticLevelAgent-499984.onnx",
+                "reward": -17.172544800873958,
+                "creation_time": 1752919361.550773,
                 "auxillary_file_paths": [
-                    "results/ppo/StaticLevelAgent/StaticLevelAgent-499999.pt"
+                    "results/ppo/StaticLevelAgent/StaticLevelAgent-499984.pt"
                 ]
             },
             {
-                "steps": 500063,
-                "file_path": "results/ppo/StaticLevelAgent/StaticLevelAgent-500063.onnx",
-                "reward": -29.062468351097777,
-                "creation_time": 1752883097.319755,
+                "steps": 500048,
+                "file_path": "results/ppo/StaticLevelAgent/StaticLevelAgent-500048.onnx",
+                "reward": -17.172544800873958,
+                "creation_time": 1752919361.5658839,
                 "auxillary_file_paths": [
-                    "results/ppo/StaticLevelAgent/StaticLevelAgent-500063.pt"
+                    "results/ppo/StaticLevelAgent/StaticLevelAgent-500048.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 500063,
+            "steps": 500048,
             "file_path": "results/ppo/StaticLevelAgent.onnx",
-            "reward": -29.062468351097777,
-            "creation_time": 1752883097.319755,
+            "reward": -17.172544800873958,
+            "creation_time": 1752919361.5658839,
             "auxillary_file_paths": [
-                "results/ppo/StaticLevelAgent/StaticLevelAgent-500063.pt"
+                "results/ppo/StaticLevelAgent/StaticLevelAgent-500048.pt"
             ]
         }
     },

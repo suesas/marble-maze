@@ -31,6 +31,7 @@ public class BoardAgent : Agent
             ballRb = ball.GetComponent<Rigidbody>();
             initialBallLocalPos = transform.InverseTransformPoint(ball.position);
         }
+        initialBallLocalPos = transform.InverseTransformPoint(ball.position);
     }
     public override void Initialize()
     {
@@ -44,7 +45,7 @@ public class BoardAgent : Agent
         currentTiltX = 0f;
         currentTiltZ = 0f;
 
-        Vector3 resetPosition = transform.TransformPoint(initialBallLocalPos + Vector3.up * 0.2f);
+        Vector3 resetPosition = transform.TransformPoint(initialBallLocalPos + Vector3.up * 0.01f);
         ball.position = resetPosition;
 
         ballRb.velocity = Vector3.zero;
