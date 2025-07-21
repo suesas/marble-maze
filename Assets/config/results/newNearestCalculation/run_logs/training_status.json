@@ -1,0 +1,29 @@
+{
+    "StaticLevelAgent": {
+        "checkpoints": [
+            {
+                "steps": 354147,
+                "file_path": "results/newNearestCalculation/StaticLevelAgent/StaticLevelAgent-354147.onnx",
+                "reward": 7.325894698500633,
+                "creation_time": 1753056860.8017652,
+                "auxillary_file_paths": [
+                    "results/newNearestCalculation/StaticLevelAgent/StaticLevelAgent-354147.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 354147,
+            "file_path": "results/newNearestCalculation/StaticLevelAgent.onnx",
+            "reward": 7.325894698500633,
+            "creation_time": 1753056860.8017652,
+            "auxillary_file_paths": [
+                "results/newNearestCalculation/StaticLevelAgent/StaticLevelAgent-354147.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

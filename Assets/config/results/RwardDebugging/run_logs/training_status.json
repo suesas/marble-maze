@@ -1,0 +1,29 @@
+{
+    "StaticLevelAgent": {
+        "checkpoints": [
+            {
+                "steps": 17279,
+                "file_path": "results/RwardDebugging/StaticLevelAgent/StaticLevelAgent-17279.onnx",
+                "reward": -48.2995074848334,
+                "creation_time": 1753045026.488874,
+                "auxillary_file_paths": [
+                    "results/RwardDebugging/StaticLevelAgent/StaticLevelAgent-17279.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 17279,
+            "file_path": "results/RwardDebugging/StaticLevelAgent.onnx",
+            "reward": -48.2995074848334,
+            "creation_time": 1753045026.488874,
+            "auxillary_file_paths": [
+                "results/RwardDebugging/StaticLevelAgent/StaticLevelAgent-17279.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

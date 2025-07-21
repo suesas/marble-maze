@@ -1,0 +1,38 @@
+{
+    "StaticLevelAgent": {
+        "checkpoints": [
+            {
+                "steps": 499981,
+                "file_path": "results/MultipleTrainingNearestDeviation/StaticLevelAgent/StaticLevelAgent-499981.onnx",
+                "reward": -2.015670244395733,
+                "creation_time": 1753087674.235361,
+                "auxillary_file_paths": [
+                    "results/MultipleTrainingNearestDeviation/StaticLevelAgent/StaticLevelAgent-499981.pt"
+                ]
+            },
+            {
+                "steps": 968699,
+                "file_path": "results/MultipleTrainingNearestDeviation/StaticLevelAgent/StaticLevelAgent-968699.onnx",
+                "reward": -3.9385669054463506,
+                "creation_time": 1753088318.167895,
+                "auxillary_file_paths": [
+                    "results/MultipleTrainingNearestDeviation/StaticLevelAgent/StaticLevelAgent-968699.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 968699,
+            "file_path": "results/MultipleTrainingNearestDeviation/StaticLevelAgent.onnx",
+            "reward": -3.9385669054463506,
+            "creation_time": 1753088318.167895,
+            "auxillary_file_paths": [
+                "results/MultipleTrainingNearestDeviation/StaticLevelAgent/StaticLevelAgent-968699.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

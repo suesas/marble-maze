@@ -1,0 +1,47 @@
+{
+    "StaticLevelAgent": {
+        "checkpoints": [
+            {
+                "steps": 499979,
+                "file_path": "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-499979.onnx",
+                "reward": 6.4418944534006775,
+                "creation_time": 1753097650.270196,
+                "auxillary_file_paths": [
+                    "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-499979.pt"
+                ]
+            },
+            {
+                "steps": 999962,
+                "file_path": "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-999962.onnx",
+                "reward": 6.479986755593309,
+                "creation_time": 1753099028.8608918,
+                "auxillary_file_paths": [
+                    "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-999962.pt"
+                ]
+            },
+            {
+                "steps": 1120278,
+                "file_path": "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-1120278.onnx",
+                "reward": 6.295240954140253,
+                "creation_time": 1753099437.5766258,
+                "auxillary_file_paths": [
+                    "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-1120278.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1120278,
+            "file_path": "results/SingleTrainingNearest/StaticLevelAgent.onnx",
+            "reward": 6.295240954140253,
+            "creation_time": 1753099437.5766258,
+            "auxillary_file_paths": [
+                "results/SingleTrainingNearest/StaticLevelAgent/StaticLevelAgent-1120278.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}
