@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - GoalTrigger
+  - Hole
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 

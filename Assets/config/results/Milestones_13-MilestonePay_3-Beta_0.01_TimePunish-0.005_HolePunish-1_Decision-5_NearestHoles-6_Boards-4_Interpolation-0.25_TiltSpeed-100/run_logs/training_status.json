@@ -1,0 +1,29 @@
+{
+    "OriginalLevel": {
+        "checkpoints": [
+            {
+                "steps": 30670,
+                "file_path": "results/Milestones_13-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-1_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100/OriginalLevel/OriginalLevel-30670.onnx",
+                "reward": 7.522455704092681,
+                "creation_time": 1757154940.082834,
+                "auxillary_file_paths": [
+                    "results/Milestones_13-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-1_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100/OriginalLevel/OriginalLevel-30670.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 30670,
+            "file_path": "results/Milestones_13-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-1_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100/OriginalLevel.onnx",
+            "reward": 7.522455704092681,
+            "creation_time": 1757154940.082834,
+            "auxillary_file_paths": [
+                "results/Milestones_13-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-1_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100/OriginalLevel/OriginalLevel-30670.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

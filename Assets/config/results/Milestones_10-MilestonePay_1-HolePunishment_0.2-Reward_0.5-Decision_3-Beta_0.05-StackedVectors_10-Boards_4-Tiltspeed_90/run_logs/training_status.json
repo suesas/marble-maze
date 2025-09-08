@@ -1,0 +1,65 @@
+{
+    "FixedOberservation": {
+        "checkpoints": [
+            {
+                "steps": 7499976,
+                "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-7499976.onnx",
+                "reward": 21.530962986250717,
+                "creation_time": 1757220450.1781309,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-7499976.pt"
+                ]
+            },
+            {
+                "steps": 7999855,
+                "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-7999855.onnx",
+                "reward": 12.939207458496094,
+                "creation_time": 1757222207.588269,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-7999855.pt"
+                ]
+            },
+            {
+                "steps": 8499893,
+                "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-8499893.onnx",
+                "reward": 19.203818821907042,
+                "creation_time": 1757223976.6658611,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-8499893.pt"
+                ]
+            },
+            {
+                "steps": 8999949,
+                "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-8999949.onnx",
+                "reward": 19.669315453370412,
+                "creation_time": 1757225778.2386198,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-8999949.pt"
+                ]
+            },
+            {
+                "steps": 9033593,
+                "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-9033593.onnx",
+                "reward": null,
+                "creation_time": 1757225963.711999,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-9033593.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 9033593,
+            "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation.onnx",
+            "reward": null,
+            "creation_time": 1757225963.711999,
+            "auxillary_file_paths": [
+                "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90/FixedOberservation/FixedOberservation-9033593.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

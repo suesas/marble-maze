@@ -69,7 +69,7 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
-  m_LastAgentTypeID: -902729914
+  m_LastAgentTypeID: -1372625422
   m_Settings:
   - serializedVersion: 3
     agentTypeID: 0
@@ -90,26 +90,8 @@ NavMeshProjectSettings:
     debug:
       m_Flags: 0
   - serializedVersion: 3
-    agentTypeID: -1923039037
-    agentRadius: 0.2
-    agentHeight: 0.3
-    agentSlope: 60
-    agentClimb: 0.1
-    ledgeDropHeight: 0
-    maxJumpAcrossDistance: 0
-    minRegionArea: 2
-    manualCellSize: 0
-    cellSize: 0.16666667
-    manualTileSize: 0
-    tileSize: 256
-    buildHeightMesh: 0
-    maxJobWorkers: 0
-    preserveTilesOutsideBounds: 0
-    debug:
-      m_Flags: 0
-  - serializedVersion: 3
-    agentTypeID: -902729914
-    agentRadius: 0.3
+    agentTypeID: -1372625422
+    agentRadius: 0.33
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -128,4 +110,3 @@ NavMeshProjectSettings:
   m_SettingNames:
   - Humanoid
   - Marble
-  - Marble2

@@ -1,0 +1,65 @@
+{
+    "AdvDec_Beta": {
+        "checkpoints": [
+            {
+                "steps": 2999943,
+                "file_path": "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-2999943.onnx",
+                "reward": 1.640682578086853,
+                "creation_time": 1754917150.754146,
+                "auxillary_file_paths": [
+                    "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-2999943.pt"
+                ]
+            },
+            {
+                "steps": 3499976,
+                "file_path": "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-3499976.onnx",
+                "reward": 1.5174078862182796,
+                "creation_time": 1754918453.465153,
+                "auxillary_file_paths": [
+                    "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-3499976.pt"
+                ]
+            },
+            {
+                "steps": 3999942,
+                "file_path": "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-3999942.onnx",
+                "reward": 1.6399935565035169,
+                "creation_time": 1754919766.318372,
+                "auxillary_file_paths": [
+                    "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-3999942.pt"
+                ]
+            },
+            {
+                "steps": 4499936,
+                "file_path": "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-4499936.onnx",
+                "reward": 1.6413744688034058,
+                "creation_time": 1754921091.9197361,
+                "auxillary_file_paths": [
+                    "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-4499936.pt"
+                ]
+            },
+            {
+                "steps": 4926044,
+                "file_path": "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-4926044.onnx",
+                "reward": 1.2829363789211061,
+                "creation_time": 1754922310.380543,
+                "auxillary_file_paths": [
+                    "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-4926044.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4926044,
+            "file_path": "results/Beta0.008Dec3/AdvDec_Beta.onnx",
+            "reward": 1.2829363789211061,
+            "creation_time": 1754922310.380543,
+            "auxillary_file_paths": [
+                "results/Beta0.008Dec3/AdvDec_Beta/AdvDec_Beta-4926044.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

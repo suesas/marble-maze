@@ -1,0 +1,29 @@
+{
+    "AdvDec_Beta": {
+        "checkpoints": [
+            {
+                "steps": 201935,
+                "file_path": "results/Beta0.008Dec5/AdvDec_Beta/AdvDec_Beta-201935.onnx",
+                "reward": 1.40456814377103,
+                "creation_time": 1754923690.53122,
+                "auxillary_file_paths": [
+                    "results/Beta0.008Dec5/AdvDec_Beta/AdvDec_Beta-201935.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 201935,
+            "file_path": "results/Beta0.008Dec5/AdvDec_Beta.onnx",
+            "reward": 1.40456814377103,
+            "creation_time": 1754923690.53122,
+            "auxillary_file_paths": [
+                "results/Beta0.008Dec5/AdvDec_Beta/AdvDec_Beta-201935.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class GoalTrigger : MonoBehaviour
 {
+    private BoardAgent agent;
+
+    void Awake()
+    {
+        agent = GetComponentInParent<BoardAgent>();
+        if (agent == null)
+        {
+            Debug.LogError("No BoardAgent found in the scene!");
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // oder "Ball", je nachdem
+        if (agent != null && other.attachedRigidbody.transform == agent.ball)
         {
-            Debug.Log("Goal reached!");
-            var agent = FindObjectOfType<BoardAgent>();
-            if (agent != null)
-            {
-                agent.SetReward(5f);
-                Debug.Log($"[EPISODE END] Cumulative Reward: {agent.GetCumulativeReward()}");
-                agent.EndEpisode();
-            }
+            agent.AddReward(10f);
+            Debug.Log($"[EPISODE END: goal] Cumulative Reward: {agent.GetCumulativeReward()}");
+            agent.LogEpisodeStatsAndEnd(agent.GetCumulativeReward());
         }
     }
 }

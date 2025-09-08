@@ -1,0 +1,29 @@
+{
+    "SVG": {
+        "checkpoints": [
+            {
+                "steps": 271509,
+                "file_path": "results/SVG/SVG/SVG-271509.onnx",
+                "reward": 12.576132468519539,
+                "creation_time": 1756051601.352431,
+                "auxillary_file_paths": [
+                    "results/SVG/SVG/SVG-271509.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 271509,
+            "file_path": "results/SVG/SVG.onnx",
+            "reward": 12.576132468519539,
+            "creation_time": 1756051601.352431,
+            "auxillary_file_paths": [
+                "results/SVG/SVG/SVG-271509.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

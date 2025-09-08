@@ -23,31 +23,71 @@ public class BoardAgent : Agent
     private float currentProgress = 0f;
     private List<Vector3> idealPath;
 
+    private List<Transform> holeTs;
+    public int kNearestHoles = 5;        // wie viele Löcher max. einfließen
+    private float boardHalfSizeX;
+    private float boardHalfSizeZ;
+
     private int currentPathIndex = 0;
+
+    private int achievedCheckpoints = 0;
+    private int lastCheckpointIndex = 0;
+    private List<Vector3> debugObservedHoles = new List<Vector3>();
+    private float timeSinceLastProgress = 0f;
+    private Quaternion baseRotation;
+
+    // === Milestone-Reward ===
+    [SerializeField] int milestoneBins = 10;       // 10 => alle 10 % der Distanz
+    [SerializeField] float milestoneBonus = 3f; // Bonus pro Meilenstein
+    private float pathLength;                      // gesamte Pfadlänge
+    private int lastMilestonePaid;                 // letzter gezahlter Index (0..milestoneBins)
+    private List<float> cumPathDist;
+    private float highScore = 0f;
+    private float prevScore = 0f;
+
     void Start()
     {
-        //Time.timeScale = 0.1f; // Alles läuft 10x langsamer
-        BitmapLevelBuilder levelBuilder = FindObjectOfType<BitmapLevelBuilder>();
-        if (levelBuilder != null)
+        GetBallSizeFromMesh();
+        var rend = GetComponentInChildren<MeshRenderer>();
+        if (rend != null)
         {
-            ball = levelBuilder.GetMarbleInstance().transform;
-            ballRb = ball.GetComponent<Rigidbody>();
-            initialBallLocalPos = transform.InverseTransformPoint(ball.position);
+            var size = rend.bounds.size;
+            Debug.Log($"[BoardAgent] Board size from MeshRenderer: {size}");
+            boardHalfSizeX = size.x * 0.5f;
+            boardHalfSizeZ = size.z * 0.5f;
         }
+        else
+        {
+            // Fallback falls kein MeshRenderer gefunden
+            Debug.LogWarning("No MeshRenderer found on BoardAgent; using default board size values.");
+            if (boardHalfSizeX <= 0f) boardHalfSizeX = 0.115f;
+            if (boardHalfSizeZ <= 0f) boardHalfSizeZ = 0.14f;
+        }
+
+
+        //Time.timeScale = 0.8f; // Alles läuft 2x langsamer
         initialBallLocalPos = transform.InverseTransformPoint(ball.position);
+        initialRotation = transform.rotation;
     }
     public override void Initialize()
     {
         navPath = new NavMeshPath();
+
+        var holes = GameObject.FindGameObjectsWithTag("Hole");
+        holeTs = new List<Transform>(holes.Length);
+        foreach (var h in holes) holeTs.Add(h.transform);
     }
 
     public override void OnEpisodeBegin()
     {
+        timeSinceLastProgress = 0f;
+        achievedCheckpoints = 0;
+        lastCheckpointIndex = 0;
 
         currentPathIndex = 0;
         // Reset the agent's position and rotation
         previousProgress = 0f;
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         currentTiltX = 0f;
         currentTiltZ = 0f;
 
@@ -55,6 +95,15 @@ public class BoardAgent : Agent
         ball.position = resetPosition;
         ballRb.velocity = Vector3.zero;
         ballRb.angularVelocity = Vector3.zero;
+
+        lastMilestonePaid = 0;
+        pathLength = 0f;
+        //Log Highscore
+        if (highScore > prevScore)
+        {
+            Debug.Log($"[HIGH SCORE] {highScore}");
+        }
+        prevScore = highScore;
     }
 
     void Update()
@@ -63,18 +112,101 @@ public class BoardAgent : Agent
         if (Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log($"[EPISODE END] Cumulative Reward: {GetCumulativeReward()}");
-            //EndEpisode();
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            EndEpisode();
+            LogEpisodeStatsAndEnd(GetCumulativeReward());
         }
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.InverseTransformPoint(ball.position));
-        sensor.AddObservation(transform.InverseTransformPoint(goal.position));
-        sensor.AddObservation(ballRb.velocity);
+        // Debug-Liste für Gizmos zurücksetzen
+        debugObservedHoles.Clear();
+
+        // --- Ball-Position (lokal, x/z normiert; y wie gehabt) ---
+        Vector3 localBallPos = transform.InverseTransformPoint(ball.position);
+        float ballNx = Mathf.Clamp(localBallPos.x / boardHalfSizeX, -1f, 1f);
+        float ballNz = Mathf.Clamp(localBallPos.z / boardHalfSizeZ, -1f, 1f);
+        Debug.Log($"boardHalfSizeX: {boardHalfSizeX}, localBallPos: {localBallPos}, ballNx: {ballNx}");
+        float ballY = localBallPos.y; // i.d.R. ~0; wenn gewünscht kannst du das auch normieren
+
+        sensor.AddObservation(localBallPos.x);
+        sensor.AddObservation(localBallPos.y);
+        sensor.AddObservation(localBallPos.z);
+
+        // --- Goal-Position (lokal, x/z normiert; y wie gehabt) ---
+        Vector3 localGoalPos = transform.InverseTransformPoint(goal.position);
+        float goalNx = Mathf.Clamp(localGoalPos.x / boardHalfSizeX, -1f, 1f);
+        float goalNz = Mathf.Clamp(localGoalPos.z / boardHalfSizeZ, -1f, 1f);
+        float goalY = localGoalPos.y;
+
+        sensor.AddObservation(localGoalPos.x);
+        sensor.AddObservation(localGoalPos.y);
+        sensor.AddObservation(localGoalPos.z);
+
+        // --- Velocity (skaliert, damit Zahlenbereiche stabil bleiben) ---
+        Vector3 v = ballRb.velocity; // 10f;
+        sensor.AddObservation(v.x);
+        sensor.AddObservation(v.y);
+        sensor.AddObservation(v.z);
+
+        // --- Board-Tilt normiert ---
+        //sensor.AddObservation(Mathf.Clamp(currentTiltX / maxTilt, -1f, 1f));
+        //sensor.AddObservation(Mathf.Clamp(currentTiltZ / maxTilt, -1f, 1f));
+
+        //Board Tilt nicht normiert
+        sensor.AddObservation(currentTiltX);
+        sensor.AddObservation(currentTiltZ);
+
+        // --- K nächste Löcher: nur (nx, nz) je Loch als zwei Floats ---
+        // Nach Distanz zur Kugel sortieren
+        holeTs.Sort((a, b) =>
+        {
+            float da = (a.position - ball.position).sqrMagnitude;
+            float db = (b.position - ball.position).sqrMagnitude;
+            return da.CompareTo(db);
+        });
+
+        int count = Mathf.Min(kNearestHoles, holeTs.Count);
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 local = transform.InverseTransformPoint(holeTs[i].position);
+            debugObservedHoles.Add(holeTs[i].position); // fürs Gizmo-Highlight
+
+            float hx = Mathf.Clamp(local.x / boardHalfSizeX, -1f, 1f);
+            float hz = Mathf.Clamp(local.z / boardHalfSizeZ, -1f, 1f);
+
+            //sensor.AddObservation(hx);
+            //sensor.AddObservation(hz);
+            sensor.AddObservation(local.x);
+            sensor.AddObservation(local.z);
+        }
+
+        // Padding, falls weniger als k Löcher gefunden
+        for (int i = count; i < kNearestHoles; i++)
+        {
+            sensor.AddObservation(0f); // hx
+            sensor.AddObservation(0f); // hz
+        }
+
+        // ---- Richtungsvektor zum nächsten Pfadpunkt ----
+        if (idealPath != null && idealPath.Count > 1)
+        {
+            int nextIdx = Mathf.Min(currentPathIndex + 1, idealPath.Count - 1);
+            Vector3 nextTarget = idealPath[nextIdx];
+
+            Vector3 flat = nextTarget - ball.position;
+            flat.y = 0f; // nur XZ-Ebene
+
+            Vector3 localGuidance = transform.InverseTransformDirection(flat);
+            sensor.AddObservation(localGuidance); // roher Richtungsvektor
+
+            Debug.DrawLine(ball.position, ball.position + flat.normalized * 0.75f, Color.magenta, 0f);
+        }
+        else
+        {
+            sensor.AddObservation(Vector3.zero);
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -92,18 +224,42 @@ public class BoardAgent : Agent
 
         if (NavMesh.CalculatePath(transform.TransformPoint(initialBallLocalPos), goal.position, NavMesh.AllAreas, navPath))
         {
-            idealPath = InterpolatePath(navPath, 0.5f);
+            idealPath = InterpolatePath(navPath, 0.25f); //0.5 standard
+            cumPathDist = BuildCumulativeDistances(idealPath);
+            pathLength = cumPathDist[cumPathDist.Count - 1];
 
             // Suche nächsten gültigen Punkt
             int nearestIndex;
-            Vector3 nearest = FindVisibleNearestPathPoint(ball.position, idealPath.ToArray(), out nearestIndex);
+            Vector3 nearest = FindVisibleNearestPathPointConstrained(ball.position, idealPath, currentPathIndex, out nearestIndex, 3);
+            currentPathIndex = Mathf.Max(currentPathIndex, nearestIndex);
             currentProgress = GetDistanceAlongPath(nearest, idealPath.ToArray());
             Debug.DrawLine(ball.position, nearest, Color.black, 1f);
+            currentPathIndex = Mathf.Max(currentPathIndex, nearestIndex);
+            if (nearestIndex > lastCheckpointIndex)
+            {
+                achievedCheckpoints += (nearestIndex - lastCheckpointIndex);
+                lastCheckpointIndex = nearestIndex;
+            }
 
             float rewardDelta = currentProgress - previousProgress;
-            previousProgress = currentProgress;
-            AddReward(rewardDelta * 0.05f);
-            
+            float progressDelta = currentProgress - previousProgress;
+
+            if (progressDelta > 0.01f)
+            {
+                AddReward(progressDelta * 1.5f);
+                previousProgress = currentProgress;
+                timeSinceLastProgress = 0f; // Reset, wenn Fortschritt gemacht wurde
+            }
+            else
+            {
+                timeSinceLastProgress += Time.deltaTime;
+                if (timeSinceLastProgress > 6f) // 6 Sekunden ohne Fortschritt
+                {
+                    Debug.Log($"[EPISODE END: timeout] Cumulative Reward: {GetCumulativeReward()}");
+                    LogEpisodeStatsAndEnd(GetCumulativeReward());
+                }
+            }
+            RewardMilestones();
         }
 
         Color[] colors = new Color[] { Color.red, Color.green, Color.blue, Color.yellow, Color.magenta, Color.cyan };
@@ -115,8 +271,11 @@ public class BoardAgent : Agent
 
         if (StepCount >= MaxStep - 1)
         {
-            Debug.Log($"[EPISODE END] Cumulative Reward: {GetCumulativeReward()}");
+            SetReward(0);
+            Debug.Log($"[EPISODE END: timeout] Cumulative Reward: {GetCumulativeReward()}");
+            LogEpisodeStatsAndEnd(GetCumulativeReward());
         }
+        AddReward(-0.005f);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -126,7 +285,19 @@ public class BoardAgent : Agent
         a[1] = -Input.GetAxis("Horizontal");
     }
 
+    private void OnDrawGizmos()
+    {
+        if (debugObservedHoles == null) return;
+        Gizmos.color = Color.magenta;
+        foreach (var holePos in debugObservedHoles)
+        {
+            var p = holePos + Vector3.up * 0.01f;
+            Gizmos.DrawWireSphere(p, 0.75f); // Radius passend zur Boardgröße
+        }
+    }
 
+
+    /*
     private Vector3 FindVisibleNearestPathPoint(Vector3 currentPosition, Vector3[] pathCorners, out int nearestIndex, int maxAllowedDelta = 2)
     {
         float minDist = float.MaxValue;
@@ -164,6 +335,77 @@ public class BoardAgent : Agent
             nearestIndex = currentPathIndex;
             return pathCorners[currentPathIndex];
         }
+    }*/
+    private Vector3 FindVisibleNearestPathPointConstrained(
+    Vector3 currentPosition,
+    List<Vector3> path,
+    int currentIndex,
+    out int nearestIndex,
+    int maxForwardJump = 2
+    )
+    {
+        nearestIndex = currentIndex;
+        if (path == null || path.Count == 0)
+            return currentPosition;
+
+        int start = Mathf.Clamp(currentIndex, 0, path.Count - 1);
+        int end = Mathf.Clamp(currentIndex + Mathf.Max(0, maxForwardJump), 0, path.Count - 1);
+
+        float best = float.MaxValue;
+        Vector3 bestPt = path[currentIndex];
+
+        for (int i = start; i <= end; i++)
+        {
+            Vector3 target = path[i];
+            bool clear = IsPathClearForBall(currentPosition, target);
+
+            // Sichtprüfung: darf nicht durch Wände blockiert sein
+            NavMeshHit hit;
+            if (NavMesh.Raycast(currentPosition, target, out hit, NavMesh.AllAreas))
+                continue;
+            if (!clear) continue;
+
+            float d = (target - currentPosition).sqrMagnitude;
+            if (d < best)
+            {
+                best = d;
+                bestPt = target;
+                nearestIndex = i;
+            }
+        }
+
+        return bestPt;
+    }
+
+    [SerializeField] float rayHeight = 0.02f;      // leicht über dem Boden casten
+    [SerializeField] LayerMask obstacleMask;       // nur Wände/Barrieren-Layer
+    [SerializeField] QueryTriggerInteraction tri = QueryTriggerInteraction.Ignore;
+
+    bool IsLineClearPhysics(Vector3 from, Vector3 to)
+    {
+        // leicht anheben, damit wir nicht am Boden „kratzen“
+        from.y += rayHeight;
+        to.y += rayHeight;
+        // Prüft, ob IRGENDETWAS dazwischen liegt
+        return !Physics.Linecast(from, to, obstacleMask, tri);
+    }
+
+    private float ballRadius;
+    [SerializeField] float clearanceFactor = 0.8f; // etwas kleiner als die Kugel
+
+    bool IsPathClearForBall(Vector3 from, Vector3 to)
+    {
+        from.y += rayHeight;
+        to.y += rayHeight;
+
+        Vector3 dir = (to - from);
+        float dist = dir.magnitude;
+        if (dist < 1e-4f) return true;
+
+        dir /= dist; // normieren
+
+        // „dicker“ Strahl in Kugelbreite
+        return !Physics.SphereCast(from, ballRadius * clearanceFactor, dir, out _, dist, obstacleMask, tri);
     }
 
     private float GetDistanceAlongPath(Vector3 point, Vector3[] pathCorners)
@@ -205,4 +447,68 @@ public class BoardAgent : Agent
 
         return points;
     }
+
+    public void LogEpisodeStatsAndEnd(float score)
+    {
+        Academy.Instance.StatsRecorder.Add("achieved_checkpoints", achievedCheckpoints);
+
+        if (idealPath != null && idealPath.Count > 1)
+            Academy.Instance.StatsRecorder.Add("progress_norm", lastCheckpointIndex / (float)(idealPath.Count - 1));
+        if (score > this.highScore)
+        {
+            this.highScore = score;
+        }
+        EndEpisode();
+    }
+
+    List<float> BuildCumulativeDistances(List<Vector3> path)
+    {
+        var cum = new List<float>();
+        float total = 0f;
+        cum.Add(0f);
+
+        for (int i = 0; i < path.Count - 1; i++)
+        {
+            total += Vector3.Distance(path[i], path[i + 1]);
+            cum.Add(total);
+        }
+
+        return cum;
+    }
+
+    void RewardMilestones()
+    {
+        if (pathLength <= 0f) return;
+
+        // aktueller Fortschritt in Metern (oder Unity-Einheiten)
+        float progressDist = currentProgress;
+
+        // welcher Meilenstein wurde erreicht?
+        int reached = Mathf.FloorToInt((progressDist / pathLength) * milestoneBins);
+
+        // alle noch nicht bezahlten Meilensteine ausschütten
+        while (lastMilestonePaid < reached && lastMilestonePaid < milestoneBins)
+        {
+            lastMilestonePaid++;
+            AddReward(milestoneBonus);
+
+            // optional: fürs Logging
+            Debug.Log($"[MILESTONE] Reached {lastMilestonePaid}/{milestoneBins}, total reward now {GetCumulativeReward()}");
+        }
+    }
+    void GetBallSizeFromMesh()
+    {
+        var rend = ball.GetComponent<MeshRenderer>();
+        if (rend != null)
+        {
+            Vector3 size = rend.bounds.size;
+            ballRadius = size.x * 0.5f; // Annahme: Kugel ist in X-Richtung gemessen
+        }
+        else
+        {
+            Debug.LogWarning("Ball hat keinen MeshRenderer!");
+        }
+    }
 }
+
+

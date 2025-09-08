@@ -1,0 +1,29 @@
+{
+    "HoleObservationMultiple": {
+        "checkpoints": [
+            {
+                "steps": 262204,
+                "file_path": "results/HoleMultiple/HoleObservationMultiple/HoleObservationMultiple-262204.onnx",
+                "reward": 10.620002827357725,
+                "creation_time": 1756107452.817205,
+                "auxillary_file_paths": [
+                    "results/HoleMultiple/HoleObservationMultiple/HoleObservationMultiple-262204.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 262204,
+            "file_path": "results/HoleMultiple/HoleObservationMultiple.onnx",
+            "reward": 10.620002827357725,
+            "creation_time": 1756107452.817205,
+            "auxillary_file_paths": [
+                "results/HoleMultiple/HoleObservationMultiple/HoleObservationMultiple-262204.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

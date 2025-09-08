@@ -1,0 +1,29 @@
+{
+    "DiffV2Agent": {
+        "checkpoints": [
+            {
+                "steps": 13976,
+                "file_path": "results/ppo/DiffV2Agent/DiffV2Agent-13976.onnx",
+                "reward": 0.0678209219701015,
+                "creation_time": 1754863066.754366,
+                "auxillary_file_paths": [
+                    "results/ppo/DiffV2Agent/DiffV2Agent-13976.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 13976,
+            "file_path": "results/ppo/DiffV2Agent.onnx",
+            "reward": 0.0678209219701015,
+            "creation_time": 1754863066.754366,
+            "auxillary_file_paths": [
+                "results/ppo/DiffV2Agent/DiffV2Agent-13976.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

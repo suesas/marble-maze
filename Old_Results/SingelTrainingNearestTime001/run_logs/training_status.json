@@ -1,0 +1,65 @@
+{
+    "StaticLevelAgent": {
+        "checkpoints": [
+            {
+                "steps": 5999956,
+                "file_path": "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-5999956.onnx",
+                "reward": 6.628451922535897,
+                "creation_time": 1754566627.280132,
+                "auxillary_file_paths": [
+                    "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-5999956.pt"
+                ]
+            },
+            {
+                "steps": 6499949,
+                "file_path": "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-6499949.onnx",
+                "reward": 6.785970307048961,
+                "creation_time": 1754568076.206549,
+                "auxillary_file_paths": [
+                    "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-6499949.pt"
+                ]
+            },
+            {
+                "steps": 6999977,
+                "file_path": "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-6999977.onnx",
+                "reward": 7.49337489742878,
+                "creation_time": 1754569538.0343208,
+                "auxillary_file_paths": [
+                    "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-6999977.pt"
+                ]
+            },
+            {
+                "steps": 7499959,
+                "file_path": "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-7499959.onnx",
+                "reward": 6.970500237175396,
+                "creation_time": 1754570984.570703,
+                "auxillary_file_paths": [
+                    "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-7499959.pt"
+                ]
+            },
+            {
+                "steps": 7768012,
+                "file_path": "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-7768012.onnx",
+                "reward": 7.325928597648939,
+                "creation_time": 1754571837.958498,
+                "auxillary_file_paths": [
+                    "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-7768012.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 7768012,
+            "file_path": "results/SingelTrainingNearestTime001/StaticLevelAgent.onnx",
+            "reward": 7.325928597648939,
+            "creation_time": 1754571837.958498,
+            "auxillary_file_paths": [
+                "results/SingelTrainingNearestTime001/StaticLevelAgent/StaticLevelAgent-7768012.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

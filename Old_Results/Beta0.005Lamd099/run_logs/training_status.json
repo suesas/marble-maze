@@ -1,0 +1,47 @@
+{
+    "BetaTest": {
+        "checkpoints": [
+            {
+                "steps": 499952,
+                "file_path": "results/Beta0.005Lamd099/BetaTest/BetaTest-499952.onnx",
+                "reward": 1.7383950273132935,
+                "creation_time": 1754956889.0135949,
+                "auxillary_file_paths": [
+                    "results/Beta0.005Lamd099/BetaTest/BetaTest-499952.pt"
+                ]
+            },
+            {
+                "steps": 999987,
+                "file_path": "results/Beta0.005Lamd099/BetaTest/BetaTest-999987.onnx",
+                "reward": 2.1097176647488958,
+                "creation_time": 1754958581.496725,
+                "auxillary_file_paths": [
+                    "results/Beta0.005Lamd099/BetaTest/BetaTest-999987.pt"
+                ]
+            },
+            {
+                "steps": 1292547,
+                "file_path": "results/Beta0.005Lamd099/BetaTest/BetaTest-1292547.onnx",
+                "reward": 2.2885525406087064,
+                "creation_time": 1754959614.468579,
+                "auxillary_file_paths": [
+                    "results/Beta0.005Lamd099/BetaTest/BetaTest-1292547.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1292547,
+            "file_path": "results/Beta0.005Lamd099/BetaTest.onnx",
+            "reward": 2.2885525406087064,
+            "creation_time": 1754959614.468579,
+            "auxillary_file_paths": [
+                "results/Beta0.005Lamd099/BetaTest/BetaTest-1292547.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

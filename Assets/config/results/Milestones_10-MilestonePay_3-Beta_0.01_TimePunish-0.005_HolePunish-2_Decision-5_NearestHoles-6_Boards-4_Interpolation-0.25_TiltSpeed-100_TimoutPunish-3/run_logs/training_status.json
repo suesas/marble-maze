@@ -1,0 +1,65 @@
+{
+    "OriginalLevel": {
+        "checkpoints": [
+            {
+                "steps": 1499975,
+                "file_path": "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-1499975.onnx",
+                "reward": 14.121925507272993,
+                "creation_time": 1757158387.268118,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-1499975.pt"
+                ]
+            },
+            {
+                "steps": 1999967,
+                "file_path": "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-1999967.onnx",
+                "reward": 13.735669355980958,
+                "creation_time": 1757159605.584258,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-1999967.pt"
+                ]
+            },
+            {
+                "steps": 2499973,
+                "file_path": "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-2499973.onnx",
+                "reward": 14.033246054568075,
+                "creation_time": 1757160847.67627,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-2499973.pt"
+                ]
+            },
+            {
+                "steps": 2999998,
+                "file_path": "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-2999998.onnx",
+                "reward": 14.360181653499604,
+                "creation_time": 1757162092.0901089,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-2999998.pt"
+                ]
+            },
+            {
+                "steps": 3024854,
+                "file_path": "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-3024854.onnx",
+                "reward": 14.293146351618427,
+                "creation_time": 1757162184.020509,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-3024854.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 3024854,
+            "file_path": "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel.onnx",
+            "reward": 14.293146351618427,
+            "creation_time": 1757162184.020509,
+            "auxillary_file_paths": [
+                "results/Milestones_10-MilestonePay_3-Beta_0.01_TimePunish-0.005_HolePunish-2_Decision-5_NearestHoles-6_Boards-4_Interpolation-0.25_TiltSpeed-100_TimoutPunish-3/OriginalLevel/OriginalLevel-3024854.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

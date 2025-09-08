@@ -1,0 +1,38 @@
+{
+    "HoleObservationMultiple": {
+        "checkpoints": [
+            {
+                "steps": 499954,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.005/HoleObservationMultiple/HoleObservationMultiple-499954.onnx",
+                "reward": 42.857241054447215,
+                "creation_time": 1755553849.072434,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.005/HoleObservationMultiple/HoleObservationMultiple-499954.pt"
+                ]
+            },
+            {
+                "steps": 665707,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.005/HoleObservationMultiple/HoleObservationMultiple-665707.onnx",
+                "reward": 46.35407920383801,
+                "creation_time": 1755554324.862153,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.005/HoleObservationMultiple/HoleObservationMultiple-665707.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 665707,
+            "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.005/HoleObservationMultiple.onnx",
+            "reward": 46.35407920383801,
+            "creation_time": 1755554324.862153,
+            "auxillary_file_paths": [
+                "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.005/HoleObservationMultiple/HoleObservationMultiple-665707.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

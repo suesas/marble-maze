@@ -1,0 +1,38 @@
+{
+    "HoleObservationMultiple": {
+        "checkpoints": [
+            {
+                "steps": 499997,
+                "file_path": "results/CompleteRun2/HoleObservationMultiple/HoleObservationMultiple-499997.onnx",
+                "reward": 11.119658415829539,
+                "creation_time": 1756118559.205296,
+                "auxillary_file_paths": [
+                    "results/CompleteRun2/HoleObservationMultiple/HoleObservationMultiple-499997.pt"
+                ]
+            },
+            {
+                "steps": 856129,
+                "file_path": "results/CompleteRun2/HoleObservationMultiple/HoleObservationMultiple-856129.onnx",
+                "reward": 11.15672759150425,
+                "creation_time": 1756119830.479415,
+                "auxillary_file_paths": [
+                    "results/CompleteRun2/HoleObservationMultiple/HoleObservationMultiple-856129.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 856129,
+            "file_path": "results/CompleteRun2/HoleObservationMultiple.onnx",
+            "reward": 11.15672759150425,
+            "creation_time": 1756119830.479415,
+            "auxillary_file_paths": [
+                "results/CompleteRun2/HoleObservationMultiple/HoleObservationMultiple-856129.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

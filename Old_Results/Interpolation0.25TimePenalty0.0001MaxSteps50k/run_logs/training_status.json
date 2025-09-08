@@ -1,0 +1,65 @@
+{
+    "LongRun": {
+        "checkpoints": [
+            {
+                "steps": 999968,
+                "file_path": "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-999968.onnx",
+                "reward": null,
+                "creation_time": 1754991249.984499,
+                "auxillary_file_paths": [
+                    "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-999968.pt"
+                ]
+            },
+            {
+                "steps": 1499992,
+                "file_path": "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-1499992.onnx",
+                "reward": 2.0086179226636887,
+                "creation_time": 1754993107.1720488,
+                "auxillary_file_paths": [
+                    "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-1499992.pt"
+                ]
+            },
+            {
+                "steps": 1999973,
+                "file_path": "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-1999973.onnx",
+                "reward": 2.595247092967232,
+                "creation_time": 1754994967.820114,
+                "auxillary_file_paths": [
+                    "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-1999973.pt"
+                ]
+            },
+            {
+                "steps": 2499950,
+                "file_path": "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-2499950.onnx",
+                "reward": 2.744766174035298,
+                "creation_time": 1754996894.488331,
+                "auxillary_file_paths": [
+                    "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-2499950.pt"
+                ]
+            },
+            {
+                "steps": 2685652,
+                "file_path": "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-2685652.onnx",
+                "reward": 2.7698396532707745,
+                "creation_time": 1754999171.6159208,
+                "auxillary_file_paths": [
+                    "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-2685652.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2685652,
+            "file_path": "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun.onnx",
+            "reward": 2.7698396532707745,
+            "creation_time": 1754999171.6159208,
+            "auxillary_file_paths": [
+                "results/Interpolation0.25TimePenalty0.0001MaxSteps50k/LongRun/LongRun-2685652.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

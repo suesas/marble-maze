@@ -1,0 +1,65 @@
+{
+    "HoleObservationMultiple": {
+        "checkpoints": [
+            {
+                "steps": 499967,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-499967.onnx",
+                "reward": 44.46685886379845,
+                "creation_time": 1755543510.49854,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-499967.pt"
+                ]
+            },
+            {
+                "steps": 999942,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-999942.onnx",
+                "reward": 45.49086502649016,
+                "creation_time": 1755544555.7721589,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-999942.pt"
+                ]
+            },
+            {
+                "steps": 1499951,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-1499951.onnx",
+                "reward": 37.81645081192255,
+                "creation_time": 1755545896.779914,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-1499951.pt"
+                ]
+            },
+            {
+                "steps": 1999962,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-1999962.onnx",
+                "reward": 53.88102684170008,
+                "creation_time": 1755547463.622331,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-1999962.pt"
+                ]
+            },
+            {
+                "steps": 2309989,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-2309989.onnx",
+                "reward": 53.739714067468654,
+                "creation_time": 1755548527.557374,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-2309989.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2309989,
+            "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple.onnx",
+            "reward": 53.739714067468654,
+            "creation_time": 1755548527.557374,
+            "auxillary_file_paths": [
+                "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3Layers/HoleObservationMultiple/HoleObservationMultiple-2309989.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

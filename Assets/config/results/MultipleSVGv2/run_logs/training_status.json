@@ -1,0 +1,65 @@
+{
+    "SVG": {
+        "checkpoints": [
+            {
+                "steps": 6999970,
+                "file_path": "results/MultipleSVGv2/SVG/SVG-6999970.onnx",
+                "reward": 37.17973464230696,
+                "creation_time": 1756097660.084765,
+                "auxillary_file_paths": [
+                    "results/MultipleSVGv2/SVG/SVG-6999970.pt"
+                ]
+            },
+            {
+                "steps": 7499991,
+                "file_path": "results/MultipleSVGv2/SVG/SVG-7499991.onnx",
+                "reward": 37.88087377048308,
+                "creation_time": 1756099314.322577,
+                "auxillary_file_paths": [
+                    "results/MultipleSVGv2/SVG/SVG-7499991.pt"
+                ]
+            },
+            {
+                "steps": 7999950,
+                "file_path": "results/MultipleSVGv2/SVG/SVG-7999950.onnx",
+                "reward": 41.51497347950935,
+                "creation_time": 1756100959.809133,
+                "auxillary_file_paths": [
+                    "results/MultipleSVGv2/SVG/SVG-7999950.pt"
+                ]
+            },
+            {
+                "steps": 8499953,
+                "file_path": "results/MultipleSVGv2/SVG/SVG-8499953.onnx",
+                "reward": 36.807803517473594,
+                "creation_time": 1756102630.182118,
+                "auxillary_file_paths": [
+                    "results/MultipleSVGv2/SVG/SVG-8499953.pt"
+                ]
+            },
+            {
+                "steps": 8911722,
+                "file_path": "results/MultipleSVGv2/SVG/SVG-8911722.onnx",
+                "reward": 37.760672211208764,
+                "creation_time": 1756104095.344237,
+                "auxillary_file_paths": [
+                    "results/MultipleSVGv2/SVG/SVG-8911722.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 8911722,
+            "file_path": "results/MultipleSVGv2/SVG.onnx",
+            "reward": 37.760672211208764,
+            "creation_time": 1756104095.344237,
+            "auxillary_file_paths": [
+                "results/MultipleSVGv2/SVG/SVG-8911722.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

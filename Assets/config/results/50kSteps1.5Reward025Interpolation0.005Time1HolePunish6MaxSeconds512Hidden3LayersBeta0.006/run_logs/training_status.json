@@ -1,0 +1,47 @@
+{
+    "HoleObservationMultiple": {
+        "checkpoints": [
+            {
+                "steps": 499966,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-499966.onnx",
+                "reward": 24.111833922162248,
+                "creation_time": 1755551588.624202,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-499966.pt"
+                ]
+            },
+            {
+                "steps": 999991,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-999991.onnx",
+                "reward": 24.647241522284116,
+                "creation_time": 1755552586.88623,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-999991.pt"
+                ]
+            },
+            {
+                "steps": 1093707,
+                "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-1093707.onnx",
+                "reward": 24.66175657769908,
+                "creation_time": 1755552794.614113,
+                "auxillary_file_paths": [
+                    "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-1093707.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1093707,
+            "file_path": "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple.onnx",
+            "reward": 24.66175657769908,
+            "creation_time": 1755552794.614113,
+            "auxillary_file_paths": [
+                "results/50kSteps1.5Reward025Interpolation0.005Time1HolePunish6MaxSeconds512Hidden3LayersBeta0.006/HoleObservationMultiple/HoleObservationMultiple-1093707.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

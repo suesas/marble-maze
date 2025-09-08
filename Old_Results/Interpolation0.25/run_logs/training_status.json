@@ -1,0 +1,29 @@
+{
+    "LongRun": {
+        "checkpoints": [
+            {
+                "steps": 263793,
+                "file_path": "results/Interpolation0.25/LongRun/LongRun-263793.onnx",
+                "reward": 1.2013280349317939,
+                "creation_time": 1754987627.392718,
+                "auxillary_file_paths": [
+                    "results/Interpolation0.25/LongRun/LongRun-263793.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 263793,
+            "file_path": "results/Interpolation0.25/LongRun.onnx",
+            "reward": 1.2013280349317939,
+            "creation_time": 1754987627.392718,
+            "auxillary_file_paths": [
+                "results/Interpolation0.25/LongRun/LongRun-263793.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}
