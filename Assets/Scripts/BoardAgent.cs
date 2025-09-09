@@ -189,6 +189,7 @@ public class BoardAgent : Agent
             sensor.AddObservation(0f); // hz
         }
 
+        
         // ---- Richtungsvektor zum nächsten Pfadpunkt ----
         if (idealPath != null && idealPath.Count > 1)
         {

@@ -215,8 +215,9 @@ public class NewAgent : Agent
             sensor.AddObservation(distAlongPath); // ∈ [0,1]
         }
 
-        // --- Raycast-Distanzinformationen  ---
 
+        // --- Raycast-Distanzinformationen  ---
+        /*
         for (int i = 0; i < rayCount; i++)
         {
             bool isClear = true;
@@ -238,7 +239,7 @@ public class NewAgent : Agent
 
             // Debug optional
             Debug.DrawRay(origin, dir * maxDistance, Color.red, 0f);
-        }
+        }*/
     }
 
     float ToNormalized(float value, float min, float max)
