@@ -1,0 +1,29 @@
+{
+    "SimpleLevel": {
+        "checkpoints": [
+            {
+                "steps": 1100,
+                "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_512-NoWallRayInformation/SimpleLevel/SimpleLevel-1100.onnx",
+                "reward": -0.20000000298023224,
+                "creation_time": 1757622168.518581,
+                "auxillary_file_paths": [
+                    "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_512-NoWallRayInformation/SimpleLevel/SimpleLevel-1100.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1100,
+            "file_path": "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_512-NoWallRayInformation/SimpleLevel.onnx",
+            "reward": -0.20000000298023224,
+            "creation_time": 1757622168.518581,
+            "auxillary_file_paths": [
+                "results/Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_512-NoWallRayInformation/SimpleLevel/SimpleLevel-1100.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

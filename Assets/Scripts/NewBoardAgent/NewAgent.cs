@@ -150,9 +150,9 @@ public class NewAgent : Agent
 
         sensor.AddObservation(ToNormalized(v.x, -7.975821f, 7.975821f));
         sensor.AddObservation(ToNormalized(v.z, -7.975821f, 7.975821f));
+        
         */
-
-        //--- Board-Tilt normiert ---
+        // --- Board-Tilt normiert ---
         float tiltNx = ToNormalized(currentTiltX, -maxTilt, maxTilt);
         float tiltNz = ToNormalized(currentTiltZ, -maxTilt, maxTilt);
 
@@ -217,7 +217,7 @@ public class NewAgent : Agent
 
 
         // --- Raycast-Distanzinformationen  ---
-        /*
+        
         for (int i = 0; i < rayCount; i++)
         {
             bool isClear = true;
@@ -331,7 +331,7 @@ public class NewAgent : Agent
         foreach (var holePos in debugObservedHoles)
         {
             var p = holePos + Vector3.up * 0.01f;
-            //Gizmos.DrawWireSphere(p, 0.75f); // Radius passend zur Boardgröße
+            Gizmos.DrawWireSphere(p, 0.75f); // Radius passend zur Boardgröße
         }
     }
 
