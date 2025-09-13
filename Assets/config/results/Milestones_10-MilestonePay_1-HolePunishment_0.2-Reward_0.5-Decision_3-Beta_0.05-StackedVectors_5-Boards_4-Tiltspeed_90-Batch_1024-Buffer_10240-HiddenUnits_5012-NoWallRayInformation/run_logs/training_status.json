@@ -1,0 +1,65 @@
+{
+    "FixedOberservation": {
+        "checkpoints": [
+            {
+                "steps": 5999884,
+                "file_path": "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-5999884.onnx",
+                "reward": 10.539065782616778,
+                "creation_time": 1757413429.756344,
+                "auxillary_file_paths": [
+                    "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-5999884.pt"
+                ]
+            },
+            {
+                "steps": 6499826,
+                "file_path": "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-6499826.onnx",
+                "reward": 17.599308921024203,
+                "creation_time": 1757418487.8643699,
+                "auxillary_file_paths": [
+                    "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-6499826.pt"
+                ]
+            },
+            {
+                "steps": 6999873,
+                "file_path": "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-6999873.onnx",
+                "reward": 15.766786382311867,
+                "creation_time": 1757423777.6401198,
+                "auxillary_file_paths": [
+                    "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-6999873.pt"
+                ]
+            },
+            {
+                "steps": 7499980,
+                "file_path": "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-7499980.onnx",
+                "reward": 16.905671705092704,
+                "creation_time": 1757429256.4950578,
+                "auxillary_file_paths": [
+                    "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-7499980.pt"
+                ]
+            },
+            {
+                "steps": 7550403,
+                "file_path": "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-7550403.onnx",
+                "reward": 13.997188532163227,
+                "creation_time": 1757429812.27158,
+                "auxillary_file_paths": [
+                    "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-7550403.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 7550403,
+            "file_path": "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation.onnx",
+            "reward": 13.997188532163227,
+            "creation_time": 1757429812.27158,
+            "auxillary_file_paths": [
+                "results\\Milestones_10-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_5-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_5012-NoWallRayInformation\\FixedOberservation\\FixedOberservation-7550403.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.8.0+cpu"
+    }
+}
