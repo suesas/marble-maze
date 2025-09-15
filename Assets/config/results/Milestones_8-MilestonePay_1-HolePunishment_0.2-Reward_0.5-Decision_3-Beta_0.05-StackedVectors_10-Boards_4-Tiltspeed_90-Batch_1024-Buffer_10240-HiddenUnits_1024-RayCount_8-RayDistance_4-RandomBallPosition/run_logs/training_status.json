@@ -1,0 +1,65 @@
+{
+    "RandomStartPosition": {
+        "checkpoints": [
+            {
+                "steps": 25999809,
+                "file_path": "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-25999809.onnx",
+                "reward": 37.64639304578304,
+                "creation_time": 1757917069.593941,
+                "auxillary_file_paths": [
+                    "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-25999809.pt"
+                ]
+            },
+            {
+                "steps": 26499981,
+                "file_path": "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-26499981.onnx",
+                "reward": 28.906559844259863,
+                "creation_time": 1757919700.590992,
+                "auxillary_file_paths": [
+                    "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-26499981.pt"
+                ]
+            },
+            {
+                "steps": 26999758,
+                "file_path": "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-26999758.onnx",
+                "reward": 13.19626578191916,
+                "creation_time": 1757922337.121238,
+                "auxillary_file_paths": [
+                    "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-26999758.pt"
+                ]
+            },
+            {
+                "steps": 27499871,
+                "file_path": "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-27499871.onnx",
+                "reward": 26.995575007796287,
+                "creation_time": 1757925040.848159,
+                "auxillary_file_paths": [
+                    "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-27499871.pt"
+                ]
+            },
+            {
+                "steps": 27849200,
+                "file_path": "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-27849200.onnx",
+                "reward": 35.366251945495605,
+                "creation_time": 1757926948.1892412,
+                "auxillary_file_paths": [
+                    "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-27849200.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 27849200,
+            "file_path": "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition.onnx",
+            "reward": 35.366251945495605,
+            "creation_time": 1757926948.1892412,
+            "auxillary_file_paths": [
+                "results/Milestones_8-MilestonePay_1-HolePunishment_0.2-Reward_0.5-Decision_3-Beta_0.05-StackedVectors_10-Boards_4-Tiltspeed_90-Batch_1024-Buffer_10240-HiddenUnits_1024-RayCount_8-RayDistance_4-RandomBallPosition/RandomStartPosition/RandomStartPosition-27849200.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

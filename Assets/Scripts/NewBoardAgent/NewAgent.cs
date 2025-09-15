@@ -239,7 +239,7 @@ public class NewAgent : Agent
 
             // Debug optional
             Debug.DrawRay(origin, dir * maxDistance, Color.red, 0f);
-        }*/
+        }
     }
 
     float ToNormalized(float value, float min, float max)
