@@ -102,9 +102,9 @@ public class RandomStartAgent : Agent
 
         // Reset the ball's position and velocity
         // Neuen Startpunkt auf dem Pfad wählen
-        Vector3 resetPosition = transform.TransformPoint(initialBallLocalPos + randomOffset);
-        //Vector3 resetPosition = GetRandomStartPositionAlongPath();
-        //resetPosition.y = transform.TransformPoint(initialBallLocalPos).y;
+        //Vector3 resetPosition = transform.TransformPoint(initialBallLocalPos + randomOffset);
+        Vector3 resetPosition = GetRandomStartPositionAlongPath();
+        resetPosition.y = transform.TransformPoint(initialBallLocalPos).y;
         ball.position = resetPosition;
         ballRb.velocity = Vector3.zero;
         ballRb.angularVelocity = Vector3.zero;
@@ -230,7 +230,7 @@ public class RandomStartAgent : Agent
 
         for (int i = 0; i < rayCount; i++)
         {
-            bool isClear = true;
+            //bool isClear = true;
             float angle = (360f / rayCount) * i;
             Vector3 dir = Quaternion.Euler(0f, angle, 0f) * transform.forward;
             Vector3 origin = ball.position + Vector3.up * rayHeight;
@@ -240,7 +240,7 @@ public class RandomStartAgent : Agent
             {
                 //Debug.Log($"Hit {hit.collider.name} at distance {hit.distance}");
                 normalizedDist = hit.distance / maxDistance;
-                isClear = false;
+               // isClear = false;
             }
 
             sensor.AddObservation(normalizedDist);

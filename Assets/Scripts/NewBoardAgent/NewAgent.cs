@@ -220,7 +220,7 @@ public class NewAgent : Agent
         
         for (int i = 0; i < rayCount; i++)
         {
-            bool isClear = true;
+            //bool isClear = true;
             float angle = (360f / rayCount) * i;
             Vector3 dir = Quaternion.Euler(0f, angle, 0f) * transform.forward;
             Vector3 origin = ball.position + Vector3.up * rayHeight;
@@ -230,7 +230,7 @@ public class NewAgent : Agent
             {
                 //Debug.Log($"Hit {hit.collider.name} at distance {hit.distance}");
                 normalizedDist = hit.distance / maxDistance;
-                isClear = false;
+                //isClear = false;
             }
 
             sensor.AddObservation(normalizedDist);
