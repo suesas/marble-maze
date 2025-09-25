@@ -55,6 +55,9 @@ public class FinalBoardAgent : Agent
     public int rayCount = 8;
     public float maxDistance = 5f;
 
+    private int totalEpisodes = 0;
+    private int successfulEpisodes = 0;
+
     [SerializeField] private MeshRenderer floorRenderer;
     void Start()
     {
@@ -82,11 +85,22 @@ public class FinalBoardAgent : Agent
 
     public override void OnEpisodeBegin()
     {
+
+        totalEpisodes++;
+        string board  = gameObject.name;
+
+        if (totalEpisodes == 50)
+        {
+            Debug.Log($"[EPISODE] Board: {board}, Total Episodes: {totalEpisodes}, Successful: {successfulEpisodes}, Success Rate: {(successfulEpisodes / (float)totalEpisodes * 100f):F2}%");
+        }
+
         // Reset internal state
         timeSinceLastProgress = 0f;
         achievedCheckpoints = 0;
         lastCheckpointIndex = 0;
         currentPathIndex = 0;
+
+
 
 
         // Reset the board's rotation and internal state
@@ -534,6 +548,17 @@ public class FinalBoardAgent : Agent
             Debug.LogWarning("FloorRenderer not assigned!");
         }
     }
+
+    public void RegisterSuccess()
+    {   
+        string board  = gameObject.name;
+        successfulEpisodes++;
+        Debug.Log($"[SUCCESS] Board: {board}, Total Episodes: {totalEpisodes}, Successful: {successfulEpisodes}, Success Rate: {(successfulEpisodes / (float)totalEpisodes * 100f):F2}%");
+    }
+
+    public void RegisterFailure()
+    {
+        string board  = gameObject.name;
+        Debug.Log($"[FAILURE] Board: {board}, Total Episodes: {totalEpisodes}, Successful: {successfulEpisodes}, Success Rate: {(successfulEpisodes / (float)totalEpisodes * 100f):F2}%");
+    }
 }
-
-

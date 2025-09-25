@@ -17,6 +17,7 @@ public class FinalHoleTrigger : MonoBehaviour
         if (agent != null && other.attachedRigidbody.transform == agent.ball)
         {
             agent.AddReward(-0.2f);
+            agent.RegisterFailure();
             Debug.Log($"[EPISODE END: hole] Cumulative Reward: {agent.GetCumulativeReward()}");
             agent.LogEpisodeStatsAndEnd();
         }

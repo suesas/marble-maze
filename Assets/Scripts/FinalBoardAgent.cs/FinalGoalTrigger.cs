@@ -18,6 +18,7 @@ public class FinalGoalTrigger : MonoBehaviour
         {
             agent.AddReward(5f);
             Debug.Log($"[EPISODE END: goal] Cumulative Reward: {agent.GetCumulativeReward()}");
+            agent.RegisterSuccess();
             agent.LogEpisodeStatsAndEnd();
         }
     }
