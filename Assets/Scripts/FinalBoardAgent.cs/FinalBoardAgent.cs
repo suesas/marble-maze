@@ -1,3 +1,11 @@
+// FinalBoardAgent.cs
+// The creation of this script was supported by ChatGPT-5.
+
+// An ML-Agents agent that controls a tiltable board to navigate a marble to a goal while avoiding holes.
+// The agent receives observations about the marble's position, goal position, board tilt, nearby holes, and raycast distances to obstacles.
+// Rewards are given for progress along an ideal path, reaching milestones, and successfully reaching the goal
+// while penalties are applied for falling into holes or taking too long.
+
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
@@ -62,6 +70,8 @@ public class FinalBoardAgent : Agent
     // === Unity Lifecycle Methods
     // ===========================
 
+    // This method is called once when the script instance is being loaded.
+    // It initializes references and sets up the board and marble properties.
     void Start()
     {
         boardName = gameObject.name;
@@ -77,6 +87,8 @@ public class FinalBoardAgent : Agent
         InitializeHoles();
     }
 
+    // This method is called at the beginning of each episode.
+    // It resets the board, marble, and internal state for a new episode.
     public override void OnEpisodeBegin()
     {
         totalEpisodes++;
@@ -115,6 +127,8 @@ public class FinalBoardAgent : Agent
         pathLength = 0f;
     }
 
+    // This method collects observations for the agent.
+    // It gathers information about the marble's position, goal position, board tilt, nearby holes, and raycast distances to obstacles.
     public override void CollectObservations(VectorSensor sensor)
     {
         debugObservedHoles.Clear();
@@ -128,6 +142,8 @@ public class FinalBoardAgent : Agent
         AddRaycastObservations(sensor);
     }
 
+    // This method processes the actions received from the agent.
+    // It updates the board tilt based on the actions, updates the path and progress, draws debug information, handles episode timeout, and applies a small time penalty.
     public override void OnActionReceived(ActionBuffers actions)
     {
         HandleBoardTiltActions(actions);
@@ -137,6 +153,8 @@ public class FinalBoardAgent : Agent
         AddReward(-0.005f);
     }
 
+    // This method allows for manual control of the agent using keyboard input.
+    // It maps the vertical and horizontal input axes to the agent's continuous actions.
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var a = actionsOut.ContinuousActions;
@@ -144,6 +162,8 @@ public class FinalBoardAgent : Agent
         a[1] = -Input.GetAxis("Horizontal");
     }
 
+    // This method draws gizmos in the Unity editor for debugging purposes.
+    // It visualizes the positions of the observed holes around the marble.
     private void OnDrawGizmos()
     {
         if (debugObservedHoles == null) return;
@@ -159,6 +179,7 @@ public class FinalBoardAgent : Agent
     // === Observation Methods
     // ===========================
 
+    // This method adds the marble's normalized position on the board to the observation sensor.
     private void AddMarblePositionObservation(VectorSensor sensor)
     {
         Vector3 localmarblePos = transform.InverseTransformPoint(marble.position);
@@ -169,6 +190,7 @@ public class FinalBoardAgent : Agent
         sensor.AddObservation(marbleNz);
     }
 
+    // This method adds the goal's normalized position on the board to the observation sensor.
     private void AddGoalPositionObservation(VectorSensor sensor)
     {
         Vector3 localGoalPos = transform.InverseTransformPoint(goal.position);
@@ -179,6 +201,7 @@ public class FinalBoardAgent : Agent
         sensor.AddObservation(goalNz);
     }
 
+    // This method adds the current board tilt angles, normalized to [-1, 1], to the observation sensor.
     private void AddBoardTiltObservation(VectorSensor sensor)
     {
         float tiltNx = ToNormalized(currentTiltX, -maxTilt, maxTilt);
@@ -188,6 +211,8 @@ public class FinalBoardAgent : Agent
         sensor.AddObservation(tiltNz);
     }
 
+    // This method adds the positions of the k nearest holes, normalized to [-1, 1], to the observation sensor.
+    // The holes are sorted by distance to the marble, and if there are fewer than k holes, zeros are added for the remaining observations.
     private void AddHolePositionsObservation(VectorSensor sensor)
     {
         holes.Sort((a, b) =>
@@ -217,6 +242,7 @@ public class FinalBoardAgent : Agent
         }
     }
 
+    // This method adds a guidance vector pointing towards the next target point on the ideal path to the observation sensor.
     private void AddGuidanceObservation(VectorSensor sensor)
     {
         if (idealPath != null && idealPath.Count > 1)
@@ -236,6 +262,7 @@ public class FinalBoardAgent : Agent
         }
     }
 
+    // This method adds the current progress along the ideal path, normalized to [0, 1], to the observation sensor.
     private void AddPathProgressObservation(VectorSensor sensor)
     {
         if (pathLength != 0f)
@@ -249,6 +276,9 @@ public class FinalBoardAgent : Agent
         }
     }
 
+    // This method performs raycasts in multiple directions around the marble to detect nearby obstacles.
+    // It adds the normalized distances to the observation sensor, where 1 means no obstacle within maxDistance.
+    // This basically says "how far can I go in this direction before hitting something?"
     private void AddRaycastObservations(VectorSensor sensor)
     {
         for (int i = 0; i < rayCount; i++)
@@ -272,6 +302,8 @@ public class FinalBoardAgent : Agent
     // === Action & Progress Methods
     // ===========================
 
+    // This method processes the continuous actions to control the board tilt.
+    // It updates the current tilt angles based on the input and applies the rotation to the board
     private void HandleBoardTiltActions(ActionBuffers actions)
     {
         float inputX = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
@@ -285,6 +317,8 @@ public class FinalBoardAgent : Agent
         transform.rotation = Quaternion.Euler(currentTiltX, 0, currentTiltZ);
     }
 
+    // This method updates the ideal path to the goal and tracks the marble's progress along it.
+    // It calculates the nearest visible point on the path and updates progress and checkpoints accordingly.
     private void UpdatePathAndProgress()
     {
         if (NavMesh.CalculatePath(transform.TransformPoint(initialMarbleLocalPos), goal.position, NavMesh.AllAreas, navPath))
@@ -308,6 +342,8 @@ public class FinalBoardAgent : Agent
         }
     }
 
+    // This method handles progress updates and checks for timeouts.
+    // It rewards the agent for making progress and ends the episode if no progress is made for
     private void HandleProgress(float progressDelta)
     {
         if (progressDelta > 0.01f)
@@ -322,11 +358,13 @@ public class FinalBoardAgent : Agent
             if (timeSinceLastProgress > 6f) // 6 seconds without progress
             {
                 Debug.Log($"[EPISODE END: timeout] Cumulative Reward: {GetCumulativeReward()}");
+                RegisterFailure();
                 LogEpisodeStatsAndEnd();
             }
         }
     }
 
+    // This method draws the ideal path in the Unity editor for debugging purposes.
     private void DrawIdealPathDebug()
     {
         if (idealPath == null) return;
@@ -338,6 +376,7 @@ public class FinalBoardAgent : Agent
         }
     }
 
+    // This method checks if the episode has reached the maximum step count and ends it if so.
     private void HandleEpisodeTimeout()
     {
         if (StepCount >= MaxStep - 1)
@@ -352,6 +391,7 @@ public class FinalBoardAgent : Agent
     // === Pathfinding & Utility Methods
     // ===========================
 
+    // This method initializes the list of holes by finding all game objects with the "Hole" tag in the scene.
     private void InitializeHoles()
     {
         var holeObjects = GameObject.FindGameObjectsWithTag("Hole");
@@ -359,6 +399,8 @@ public class FinalBoardAgent : Agent
         foreach (var h in holeObjects) holes.Add(h.transform);
     }
 
+    // This method finds the nearest visible point on the path from the current position.
+    // It uses raycasting to ensure the path is clear. So it doesn't return a point behind a wall.
     private Vector3 FindVisibleNearestPathPoint(
         Vector3 currentPosition,
         List<Vector3> path,
@@ -399,6 +441,8 @@ public class FinalBoardAgent : Agent
         return bestPoint;
     }
 
+    // This method checks if the path between two points is clear for the marble to travel.
+    // It uses a sphere cast to account for the marble's size and a clearance factor.
     bool IsPathClearFormarble(Vector3 from, Vector3 to)
     {
         from.y += rayHeight;
@@ -413,6 +457,8 @@ public class FinalBoardAgent : Agent
         return !Physics.SphereCast(from, marbleRadius * clearanceFactor, dir, out _, dist, obstacleMask, QueryTriggerInteraction.Ignore);
     }
 
+    // This method calculates the distance along the path to a given point.
+    // It sums the lengths of the path segments up to the point.
     private float GetDistanceAlongPath(Vector3 point, Vector3[] pathCorners)
     {
         float totalDist = 0f;
@@ -431,6 +477,7 @@ public class FinalBoardAgent : Agent
         return totalDist;
     }
 
+    // This method interpolates the path to create a smoother trajectory for the marble.
     List<Vector3> InterpolatePath(NavMeshPath path, float spacing)
     {
         List<Vector3> points = new List<Vector3>();
@@ -452,25 +499,12 @@ public class FinalBoardAgent : Agent
         return points;
     }
 
-    List<float> BuildCumulativeDistances(List<Vector3> path)
-    {
-        var dist = new List<float>();
-        float total = 0f;
-        dist.Add(0f);
-
-        for (int i = 0; i < path.Count - 1; i++)
-        {
-            total += Vector3.Distance(path[i], path[i + 1]);
-            dist.Add(total);
-        }
-
-        return dist;
-    }
-
     // ===========================
     // === Reward & Stats Methods
     // ===========================
 
+    // This method rewards the agent for reaching milestones along the path.
+    // It divides the path into bins and gives a bonus for each bin reached.
     void RewardMilestones()
     {
         if (pathLength <= 0f) return;
@@ -488,6 +522,8 @@ public class FinalBoardAgent : Agent
         }
     }
 
+    // This method logs episode statistics and ends the episode.
+    // It records the number of achieved checkpoints, path completion ratio, and whether the episode was successful.
     public void LogEpisodeStatsAndEnd()
     {
         Academy.Instance.StatsRecorder.Add("achieved_checkpoints", achievedCheckpoints);
@@ -509,12 +545,16 @@ public class FinalBoardAgent : Agent
         EndEpisode();
     }
 
+    // This method registers a successful episode and updates the success statistics.
+    // It is called by the goal trigger when the marble reaches the goal.
     public void RegisterSuccess()
     {
         successfulEpisodes++;
         Debug.Log($"[SUCCESS] Board: {boardName}, Total Episodes: {totalEpisodes}, Successful: {successfulEpisodes}, Success Rate: {(successfulEpisodes / (float)totalEpisodes * 100f):F2}%");
     }
 
+    // This method registers a failed episode and updates the failure statistics.
+    // It is called by the hole trigger when the marble falls into a hole or if the episode ends due to no progress.
     public void RegisterFailure()
     {
         Debug.Log($"[FAILURE] Board: {boardName}, Total Episodes: {totalEpisodes}, Successful: {successfulEpisodes}, Success Rate: {(successfulEpisodes / (float)totalEpisodes * 100f):F2}%");
@@ -524,11 +564,13 @@ public class FinalBoardAgent : Agent
     // === Utility Methods
     // ===========================
 
+    // This method normalizes a value to the range [-1, 1] based on the provided min and max.
     float ToNormalized(float value, float min, float max)
     {
         return Mathf.Clamp((value - min) / (max - min) * 2f - 1f, -1f, 1f);
     }
 
+    // This method sets the marble's radius based on its mesh renderer bounds.
     void SetMarbleSizeFromMesh()
     {
         var rend = marble.GetComponent<MeshRenderer>();
@@ -539,10 +581,11 @@ public class FinalBoardAgent : Agent
         }
         else
         {
-            Debug.LogWarning("marble hat keinen MeshRenderer!");
+            Debug.LogWarning("marble has no MeshRenderer!");
         }
     }
 
+    // This method calculates the maximum board coordinates based on the floor renderer's bounds.
     void SetMaxBoardCoordinates()
     {
         if (floorRenderer != null)
