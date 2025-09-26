@@ -14,7 +14,7 @@ public class FinalGoalTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (agent != null && other.attachedRigidbody.transform == agent.ball)
+        if (agent != null && other.attachedRigidbody.transform == agent.marble)
         {
             agent.AddReward(5f);
             Debug.Log($"[EPISODE END: goal] Cumulative Reward: {agent.GetCumulativeReward()}");

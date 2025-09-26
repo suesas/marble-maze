@@ -14,7 +14,7 @@ public class FinalHoleTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (agent != null && other.attachedRigidbody.transform == agent.ball)
+        if (agent != null && other.attachedRigidbody.transform == agent.marble)
         {
             agent.AddReward(-0.2f);
             agent.RegisterFailure();
