@@ -32,8 +32,8 @@ MonoBehaviour:
   targetWorldWidth: 20.16
   applyPreRotation: 1
   preRotationYDegrees: 90
-  mirrorX: 1
-  mirrorZ: 1
+  mirrorX: 0
+  mirrorZ: 0
   createTiltRig: 1
   frameThickness: 0.5
   frameHeight: 25
@@ -72,7 +72,7 @@ MonoBehaviour:
   agentMilestoneBonus: 0.5
   agentRayCount: 8
   agentMaxDistance: 4
-  behaviorName: TestBehaviour
+  behaviorName: FinalEasy
   behaviorTeamId: 0
   behaviorType: 0
   useChildSensors: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
   continuousActionSize: 2
   decisionPeriod: 3
   takeActionsBetweenDecisions: 1
-  behaviorModel: {fileID: 5022602860645237092, guid: 3e796613a718e49849f80c997a642893, type: 3}
+  behaviorModel: {fileID: 0}
   inferenceDevice: 0
   trackingMode: 0
   showTrackingFeedback: 1

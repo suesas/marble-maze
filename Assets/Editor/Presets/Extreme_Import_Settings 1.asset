@@ -68,7 +68,7 @@ MonoBehaviour:
   agentKNearestHoles: 5
   agentRayHeight: 0.2
   agentClearanceFactor: 0.8
-  agentMilestoneBins: 70
+  agentMilestoneBins: 64
   agentMilestoneBonus: 0.5
   agentRayCount: 8
   agentMaxDistance: 4
