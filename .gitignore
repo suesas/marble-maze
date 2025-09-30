@@ -118,3 +118,6 @@ UnityLockfile
 
 # Unity editor backup scenes folder
 __Backupscenes/
+
+# Unity worker license cache
+workerlic
