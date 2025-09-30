@@ -72,7 +72,7 @@ MonoBehaviour:
   agentMilestoneBonus: 0.5
   agentRayCount: 8
   agentMaxDistance: 4
-  behaviorName: FinalEasy
+  behaviorName: FinalMedium
   behaviorTeamId: 0
   behaviorType: 0
   useChildSensors: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
   continuousActionSize: 2
   decisionPeriod: 3
   takeActionsBetweenDecisions: 1
-  behaviorModel: {fileID: 0}
+  behaviorModel: {fileID: 5022602860645237092, guid: cad678782b5a9ea4eb10595a865b4150, type: 3}
   inferenceDevice: 0
   trackingMode: 0
   showTrackingFeedback: 1

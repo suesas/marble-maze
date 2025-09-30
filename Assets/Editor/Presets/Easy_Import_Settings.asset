@@ -68,8 +68,8 @@ MonoBehaviour:
   agentKNearestHoles: 5
   agentRayHeight: 0.2
   agentClearanceFactor: 0.8
-  agentMilestoneBins: 30
-  agentMilestoneBonus: 0.5
+  agentMilestoneBins: 8
+  agentMilestoneBonus: 1
   agentRayCount: 8
   agentMaxDistance: 4
   behaviorName: FinalEasy
@@ -81,7 +81,7 @@ MonoBehaviour:
   continuousActionSize: 2
   decisionPeriod: 3
   takeActionsBetweenDecisions: 1
-  behaviorModel: {fileID: 0}
+  behaviorModel: {fileID: 5022602860645237092, guid: f2b3d1d0d3b18034ea1c9a5ce4fb4007, type: 3}
   inferenceDevice: 0
   trackingMode: 0
   showTrackingFeedback: 1
