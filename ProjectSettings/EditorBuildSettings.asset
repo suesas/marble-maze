@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/staticLevel.unity
     guid: 785fc9ebf24c94f248d24e668bf76fa7
   - enabled: 1
-    path: Assets/Scenes/easy.unity
+    path: Assets/Scenes/Easy.unity
     guid: dfe87e7b513324a1598bd0bc51d12bb4
   m_configObjects: {}
