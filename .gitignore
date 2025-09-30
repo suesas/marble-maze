@@ -98,3 +98,23 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 .vsconfig
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+
+# IDE/editor settings (user-specific)
+.idea/
+.vscode/
+
+# Unity lock file
+UnityLockfile
+
+# Unity editor backup scenes folder
+__Backupscenes/
