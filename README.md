@@ -4,7 +4,7 @@ WebGL/desktop-ready Unity project that teaches a virtual marble to navigate a ti
 
 ## Overview
 
-The agent tilts a board to roll a marble from a random start to a goal while avoiding holes and obstacles. Learning happens via PPO (or similar RL algorithms) through the ML-Agents toolkit. Observations combine goal/marble positions, board tilt, nearest hole locations, a guidance vector along a NavMesh path, progress along that path, and radial obstacle raycasts. Two continuous actions control tilt in X and Z.
+The agent tilts a board to roll a marble from a random start to a goal while avoiding holes and obstacles. Learning happens via PPO through the ML-Agents toolkit. Observations combine goal/marble positions, board tilt, nearest hole locations, a guidance vector along a NavMesh path, progress along that path, and radial obstacle raycasts. Two continuous actions control tilt in X and Z.
 
 ## Features
 
@@ -65,7 +65,7 @@ The agent tilts a board to roll a marble from a random start to a goal while avo
 
 You can generate playable mazes from SVGs using the importer. We provide:
 
-- Presets: `Assets/Editor/Presets/` → `Easy_Import_Settings.asset`, `Medium_Import_Settings.asset`, `Hard_Import_Settings 2.asset`, `Extreme_Import_Settings 1.asset`.
+- Presets: `Assets/Editor/Presets/` → `Easy_Import_Settings.asset`, `Medium_Import_Settings.asset`, `Hard_Import_Settings.asset`, `Extreme_Import_Settings.asset`.
 - Sample SVGs per complexity under `Assets/Resources/Levels/` (modifiable or replaceable).
 - Default materials that you can extend or swap.
 
