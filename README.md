@@ -57,7 +57,7 @@ The agent tilts a board to roll a marble from a random start to a goal while avo
 
 3) Open a scene from `Assets/Scenes/` (start with `Easy.unity`)
 
-4) Make sure NavMesh is baked (Window → AI → Navigation → Bake) if paths look incorrect
+4) Make sure the NavMesh is baked. With the AI Navigation package (1.x), select the `NavMeshSurface` in your scene and click "Bake" in the Inspector.
 
 5) Press Play
 
@@ -83,7 +83,7 @@ You can generate playable mazes from SVGs using the importer. We provide:
    - Agent: decision period, observation/action sizes, raycasts, nearest holes, milestone bins/bonus, behavior name/model/device.
    - Tracking: camera and sampling settings; RGB target color and tolerance if using marker tracking.
 6) Click `Import SVG` to build the level (prefab/objects) into the scene.
-7) Bake the NavMesh (Window → AI → Navigation → Bake) if guidance lines/path progress look off.
+7) Bake the NavMesh. With the AI Navigation package, bake from the selected `NavMeshSurface` in the Inspector.
 8) If you refined settings, click `Save To Preset` to persist them for reuse.
 
 **Important**: The complexity presets populate runnable parameters across all tabs (Import, Geometry, Materials, Marble, Agent, Tracking), but they do not ship with or auto-assign a per-complexity inference model (`.onnx`). Use an example model under `Assets/Models/` or train your own (see "Training"), then assign it on the agent via `Behavior Parameters → Model` and set it to Inference Only.
