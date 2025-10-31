@@ -81,7 +81,7 @@ MonoBehaviour:
   continuousActionSize: 2
   decisionPeriod: 3
   takeActionsBetweenDecisions: 1
-  behaviorModel: {fileID: 5022602860645237092, guid: 61722cdb4c2325d4e9d8f224ef3078b9, type: 3}
+  behaviorModel: {fileID: 5022602860645237092, guid: bbe801b34ff3b41318a979ae0333f438, type: 3}
   inferenceDevice: 0
   trackingMode: 0
   showTrackingFeedback: 1
