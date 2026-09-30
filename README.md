@@ -204,6 +204,10 @@ Tracking: RGB/other modes, marker visibility, camera height/padding, sampling re
 - Training doesn’t connect: check ML-Agents Python/Unity package versions; start `mlagents-learn` before pressing Play.
 - RGB tracking not working: ensure the marble's material color matches the RGB target color configured in the Tracking tab.
 
+## Citation
+
+If you use Marble Maze in research, please cite the project using [CITATION.cff](CITATION.cff). GitHub's **Cite this repository** menu provides APA and BibTeX formats.
+
 ## Acknowledgements
 
 Assisted by Cursor and GitHub Copilot.
