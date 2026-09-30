@@ -1,0 +1,7 @@
+Roboto Bold — Version 2.137; 2017
+Copyright 2011 Google Inc. All Rights Reserved.
+Licensed under the Apache License, Version 2.0; see LICENSE.txt in this directory.
+Source: the bundled font's name-table copyright, version and license metadata.
+File: Assets/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf
+SHA-256: 7d0b991ee3e0be7af01ad7ea8cd2beea6c00a25e679a0226b6737f079aafff86
+This notice identifies the bundled font; it does not change its license terms.

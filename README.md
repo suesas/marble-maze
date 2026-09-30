@@ -206,6 +206,8 @@ Tracking: RGB/other modes, marker visibility, camera height/padding, sampling re
 
 ## Citation
 
+Lennart Vincent Bart and Maximilian Baumann contributed equally to this project.
+
 If you use Marble Maze in research, please cite the project using [CITATION.cff](CITATION.cff). GitHub's **Cite this repository** menu provides APA and BibTeX formats.
 
 ## Acknowledgements
@@ -214,4 +216,6 @@ Assisted by Cursor and GitHub Copilot.
 
 ## License
 
-Licensed under the MIT License. See `LICENSE` for details.
+The authors' original project code is licensed under the [MIT License](LICENSE.txt).
+
+Third-party components and assets retain their respective licenses and notices. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the notices supplied with those components.

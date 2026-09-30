@@ -1,8 +1,5 @@
 cff-version: "1.2.0"
-message: >-
-  If you use this software, please cite it using the metadata in this file.
-  Lennart Vincent Bart and Maximilian Baumann contributed equally to this
-  university project.
+message: "If you use this software, please cite it using the metadata in this file."
 type: software
 title: "Marble Maze (Unity + ML-Agents)"
 authors:
@@ -11,4 +8,3 @@ authors:
   - family-names: "Baumann"
     given-names: "Maximilian"
 repository-code: "https://github.com/suesas/marble-maze"
-url: "https://github.com/suesas/marble-maze"
